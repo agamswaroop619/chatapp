@@ -1,0 +1,23 @@
+@keyframes scaleAnimation {
+    0% { transform: scale(1.5); }
+    50% { transform: scale(1); }
+    85% { transform: scale(1.02); }
+    100% { transform: scale(1);}
+  }
+  @keyframes scaleAnimation1 {
+    0% { transform: scale(0.75); }
+    50% { transform: scale(1); }
+    85% { transform: scale(0.98); }
+    100% { transform: scale(1);}
+  }
+  .animate-scale {
+    animation-name: scaleAnimation;
+    animation-duration: 2500ms; /* Duration of the animation */
+    animation-iteration-count: initial; /* Repeat the animation indefinitely */
+  }
+  .animate-scale1 {
+    animation-name: scaleAnimation1;
+    animation-duration: 2500ms; /* Duration of the animation */
+    animation-iteration-count: initial; /* Repeat the animation indefinitely */
+  }
+  
