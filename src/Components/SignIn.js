@@ -12,7 +12,9 @@ export default function SignIn() {
       firebase.auth().signInWithPopup(provider);
       popupcounter = popupcounter+1;
     }
-
+    else{
+      alert("SignIn Popup already open!");
+    }
   };
 
 
