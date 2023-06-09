@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sidenav from './Sidnav';
 import Topnav from './Topnav';
-
+import Messages from './Messages'
 class ChatRoom extends Component {
   render() {
     return (
@@ -9,7 +9,7 @@ class ChatRoom extends Component {
           <div>
             <Topnav></Topnav>
             <section className='h-19/20 right-0 w-5/6 bottom-0 fixed'>
-            ChatRoom
+            <Messages></Messages>
             </section>
             <Sidenav />
           </div>
