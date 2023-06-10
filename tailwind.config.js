@@ -9,6 +9,10 @@ module.exports = {
         '1/20': '7vh',    // 1/10th of the screen height
         '19/20': '93vh',    // 9/10th of the screen height
       },
+      width: {
+        '1/20': '7%',    // 1/10th of the screen height
+        '19/20': '93%',    // 9/10th of the screen height
+      },
     },
   },
   plugins: [],
