@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import './animation.css';
+import { doc, setDoc } from "firebase/firestore"; 
+import { db } from '../firebase';
+
 
 export default function SignIn() {
   const [displayName, setDisplayName] = useState('');
@@ -15,6 +18,18 @@ export default function SignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider);
   };
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        const userId = user.uid;
+         setDoc(doc(db, "users", userId), {
+          displayName,
+          userId,
+        });
+      }
+    });
+  }, );
 
   return (
     <div className='flex items-center justify-center bg-gray-900 min-h-screen min-w-screen'>
@@ -32,6 +47,7 @@ export default function SignIn() {
             <button className='rounded-full p-2 border-whitesmoke text-xl border-4 border-solid bg-gray-700 text-white font-mono' onClick={signInWithGoogle}>
               Sign In with Google
             </button>
+
           </div>
         </div>
       </div>
