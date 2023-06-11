@@ -7,20 +7,11 @@ import {useAuthState} from 'react-firebase-hooks/auth'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 import SignIn from './Components/SignIn'
 import ChatRoom from './Components/ChatRoom/ChatRoom'
+import { getFirestore } from 'firebase/firestore';
 
 function App() {
 
-firebase.initializeApp({
-  apiKey: "AIzaSyDsvskhGFbDO5HXK3lqG7iKHaVwrBLJXl4",
-  authDomain: "chatapp-6851a.firebaseapp.com",
-  projectId: "chatapp-6851a",
-  storageBucket: "chatapp-6851a.appspot.com",
-  messagingSenderId: "1008138350309",
-  appId: "1:1008138350309:web:9e4dfcce3a685f5e706e0c",
-  measurementId: "G-GLVKKJS8C2"
-});
-const auth =firebase.auth();
-const firestore=firebase.firestore();
+
 
 const[user]= useAuthState(auth);
   return (
