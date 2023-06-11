@@ -3,7 +3,12 @@ import Message from './Message';
 export class Messages extends Component {
   render() {
     return (
-      <div id='Messages' className='bg-[#CBC3E3] h-screen'>
+      <div id='Messages' className='bg-[#CBC3E3] h-[100%] overflow-scroll'>
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
         <Message />
         <Message />
         <Message />
