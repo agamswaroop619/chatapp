@@ -8,10 +8,10 @@ import {useCollectionData} from 'react-firebase-hooks/firestore'
 import SignIn from './Components/SignIn'
 import ChatRoom from './Components/ChatRoom/ChatRoom'
 import { getFirestore } from 'firebase/firestore';
-
+import { firestore } from './firebase';
+import { auth } from './firebase';
+import { db } from './firebase';
 function App() {
-
-
 
 const[user]= useAuthState(auth);
   return (
