@@ -20,7 +20,6 @@ return (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/chatroom" element={<ChatRoom />} />
       </Routes>
-
       <section>
         {user ? <ChatRoom /> : <SignIn />}
       </section>

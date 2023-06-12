@@ -4,9 +4,11 @@ import 'firebase/compat/auth';
 import './animation.css';
 import { doc, setDoc } from 'firebase/firestore'; 
 import { db } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignIn() {
   const [displayName, setDisplayName] = useState('');
+  const navigate = useNavigate();
 
   const signInWithGoogle = () => {
     if (displayName.trim() === '') {
@@ -23,14 +25,14 @@ export default function SignIn() {
           displayName,
           userId,
         });
-        setDoc(doc(db, 'usersChats', userId), {
-        });
+        setDoc(doc(db, 'usersChats', userId), {});
+
+        navigate('/chatroom');
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   return (
     <div className='flex items-center justify-center bg-gray-900 min-h-screen min-w-screen'>
       <div className='bg-cyan-500 p-16 rounded-full transition-transform duration-500 animate-scale px-24'>
