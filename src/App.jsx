@@ -12,7 +12,6 @@ import { AuthContext } from './Components/Context/AuthContext';
 function App() {
 const[user]= useAuthState(auth);
 const {currentUser} = useContext (AuthContext);
-console.log(currentUser);
 return (
   <div className="App">
     <BrowserRouter>
