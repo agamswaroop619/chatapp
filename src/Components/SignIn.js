@@ -23,6 +23,8 @@ export default function SignIn() {
           displayName,
           userId,
         });
+        setDoc(doc(db, 'usersChats', userId), {
+        });
       })
       .catch((error) => {
         console.log(error);
