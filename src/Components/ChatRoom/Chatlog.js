@@ -1,24 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export class Chatlog extends Component {
-  render() {
-    return (
-      <div>
+const Chatlog = ({ user }) => {
+  return (
+    <div>
+      {user ? (
         <div id='userChat' className='flex items-center py-2 hover:bg-gray-950 cursor-pointer'>
-          <img className='h-[50px] w-[50px] rounded-full' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvzC4vcQZWXEYl5FBNhRu75i-zcY3gfT5DAWhSgZVbFQ&s'></img>
-          <span className='text-white font-mono px-2 '>Aarat</span>
+          <img className='h-[50px] w-[50px] rounded-full' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvzC4vcQZWXEYl5FBNhRu75i-zcY3gfT5DAWhSgZVbFQ&s' alt='User Avatar' />
+          <span className='text-white font-mono px-2'>{user.displayName}</span>
         </div>
-        <div id='userChat' className='flex items-center py-2 hover:bg-gray-950 cursor-pointer'>
-          <img className='h-[50px] w-[50px] rounded-full' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvzC4vcQZWXEYl5FBNhRu75i-zcY3gfT5DAWhSgZVbFQ&s'></img>
-          <span className='text-white font-mono px-2 '>Atam</span>
-        </div>
-        <div id='userChat' className='flex items-center py-2 hover:bg-gray-950 cursor-pointer'>
-          <img className='h-[50px] w-[50px] rounded-full' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvzC4vcQZWXEYl5FBNhRu75i-zcY3gfT5DAWhSgZVbFQ&s'></img>
-          <span className='text-white font-mono px-2 '>Nihal</span>
-        </div>
-      </div>
-    )
-  }
+      ) : (
+        <div className='text-white font-mono px-2'>No users available</div>
+      )}
+    </div>
+  );
 }
 
-export default Chatlog
+export default Chatlog;
