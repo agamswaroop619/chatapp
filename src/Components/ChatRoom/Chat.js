@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import Chatlog from './Chatlog';
-import Topnav from './Topnav';
 import { db } from '../../firebase';
-import { collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore'; // Import doc and setDoc
+import { collection, query, where, getDocs, getDoc, doc, setDoc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { AuthContext } from '../Context/AuthContext';
+import Topnav from './Topnav';
+import Chatlog from './Chatlog';
 
 const Chat = () => {
   const [username, setUsername] = useState("");
@@ -27,18 +27,46 @@ const Chat = () => {
   };
 
   const handleSelect = async () => {
-    const combinedId = currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
+    const combinedId =
+      currentUser.uid > user.userId
+        ? currentUser.uid + user.userId
+        : user.userId + currentUser.uid; 
+  
     try {
-      const docRef = doc(db, "chats", combinedId); // Create a document reference
-      const docSnapshot = await getDocs(docRef); // Get the document snapshot
-      
+      const docRef = doc(db, "chats", combinedId);
+      const docSnapshot = await getDoc(docRef);
+  
       if (!docSnapshot.exists()) {
-        await setDoc(docRef, { messages: [] }); // Use docRef to set the document data
+        await setDoc(docRef, { messages: [] });
       }
+  
+      const currentUserChatRef = doc(db, "userChats", currentUser.uid);
+      const userChatRef = doc(db, "userChats", user.uid);
+  
+      await updateDoc(userChatRef, {
+        [combinedId]: {
+          userInfo: {
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+          },
+          date: serverTimestamp(),
+        },
+      });
+  
+      await updateDoc(currentUserChatRef, {
+        [combinedId]: {
+          userInfo: {
+            uid: user.userId,
+            displayName: user.displayName,
+          },
+          date: serverTimestamp(),
+        },
+      });
     } catch (err) {
       console.error("Error handling user selection:", err);
     }
   };
+  
 
   const handleKey = (e) => {
     if (e.code === "Enter") {
