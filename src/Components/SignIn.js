@@ -24,7 +24,7 @@ export default function SignIn() {
           displayName: user.displayName, // Fixed: Changed user.displayName to displayName
           userId,
         });
-        setDoc(doc(db, 'usersChats', userId), {});
+        setDoc(doc(db, 'userChats', userId), {});
 
         navigate('/chatroom');
       })
