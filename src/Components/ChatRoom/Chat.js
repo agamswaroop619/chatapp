@@ -14,11 +14,13 @@ import {
 import { AuthContext } from '../Context/AuthContext';
 import Topnav from './Topnav';
 import Chatlog from './Chatlog';
+import {ChatContext} from '../Context/ChatContext';
 
 const Chat = () => {
   const [username, setUsername] = useState('');
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
+  const { dispatch } = useContext(ChatContext);
 
   const { currentUser } = useContext(AuthContext);
 
@@ -36,7 +38,7 @@ const Chat = () => {
     }
   };
 
-  const handleSelect = async () => {
+  const handleSelect = async (u) => {
     if (!user) {
       return;
     }
@@ -85,6 +87,7 @@ const Chat = () => {
       } else {
         await updateDoc(otherUserChatRef, { [combinedId]: otherUserChatData });
       }
+      dispatch({type: "CHANGE_USER", payload:u});
     } catch (error) {
       console.error('Error handling user selection:', error);
     }
