@@ -16,6 +16,7 @@ return (
   <div className="App">
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<SignIn />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/chatroom" element={<ChatRoom />} />
       </Routes>
