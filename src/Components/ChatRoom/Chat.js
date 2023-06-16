@@ -14,7 +14,7 @@ import {
 import { AuthContext } from '../Context/AuthContext';
 import Topnav from './Topnav';
 import Chatlog from './Chatlog';
-import {ChatContext} from '../Context/ChatContext';
+import { ChatContext } from '../Context/ChatContext';
 
 const Chat = () => {
   const [username, setUsername] = useState('');
@@ -87,7 +87,7 @@ const Chat = () => {
       } else {
         await updateDoc(otherUserChatRef, { [combinedId]: otherUserChatData });
       }
-      dispatch({type: "CHANGE_USER", payload:u});
+      dispatch({ type: 'CHANGE_USER', payload: u });
     } catch (error) {
       console.error('Error handling user selection:', error);
     }
@@ -99,6 +99,14 @@ const Chat = () => {
     }
   };
 
+  const handleInputChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const clearInput = () => {
+    setUsername('');
+  };
+
   return (
     <div>
       <Topnav user={user} />
@@ -108,10 +116,11 @@ const Chat = () => {
           type='text'
           placeholder='Find Your Chat!'
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={handleInputChange}
           onKeyDown={handleKey}
         />
         {err && <p>Error searching for user</p>}
+        <button onClick={clearInput} className='font-mono text-gray-400'>Clear</button>
         <Chatlog user={user} handleSelect={handleSelect} />
       </div>
     </div>
