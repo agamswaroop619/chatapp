@@ -40,7 +40,7 @@ const Messages = () => {
   }
 
   return (
-    <div id='Messages' className='bg-[#CBC3E3] h-[92.8%] overflow-scroll'>
+    <div id='Messages' className='bg-[#CBC3E3] h-[100%] overflow-scroll relative'>
       {messages.map (m=> (
       <Message message={m} key={m.id}/>
       ))}
