@@ -15,7 +15,7 @@ export const ChatContextProvider = ({ children }) => {
         switch (action.type) {
           case "CHANGE_USER":
             const waiter= currentUser.uid > action.payload.uid ? currentUser.uid + action.payload.uid : action.payload.uid+ currentUser.uid;
-            console.log(waiter); 
+            console.log(waiter? "Backend Connect succesfully" : "No connections done yet"); 
             return {
               user: action.payload,
               chatId: waiter

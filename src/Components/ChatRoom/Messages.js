@@ -51,6 +51,7 @@ const Messages = () => {
           id='inputted'
           placeholder='Type a message'
           onChange={e=>setText(e.target.value)}
+          value={text}
         />
         <button className='w-1/20 absolute bg-gray-800 bottom-0 h-1/20 right-0 text-[45px] text-white hover:bg-gray-950' onClick={handleSend}>
           ⏎

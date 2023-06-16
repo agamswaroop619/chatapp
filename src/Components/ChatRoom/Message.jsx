@@ -3,7 +3,6 @@ import { AuthContext } from '../Context/AuthContext';
 import { ChatContext } from '../Context/ChatContext';
 
 const Message = ({message}) => {
-  console.log({message})
 
   const {currentUser}= useContext(AuthContext);
   const {data}= useContext(ChatContext);

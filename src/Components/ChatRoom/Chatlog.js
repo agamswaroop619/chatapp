@@ -53,7 +53,7 @@ const Chatlog = ({ user, handleSelect }) => {
       ) : (
         <div className='text-white font-mono px-2'>No users available</div>
       )}
-      {Object.entries(chats)?.map((chat) => (
+      {Object.entries(chats)?.sort((a,b)=>a[1].date - b[1].date).map((chat) => (
         <div
           className='mt-4 p-2 bg-transparent rounded-lg flex items-center py-2 hover:bg-gray-950 cursor-pointer'
           key={chat[0]}
