@@ -28,11 +28,12 @@ const Messages = () => {
 
 
   const handleSend = async() =>{
+
     await updateDoc(doc(db, "chats", data.chatId) , {
       messages: arrayUnion ({
       id: uuid(),
       text,
-      senderId: currentUser. uid,
+      senderId: currentUser.uid,
       date: Timestamp.now(),
       })
       })
