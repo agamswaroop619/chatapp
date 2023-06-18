@@ -10,9 +10,9 @@ class ChatRoom extends Component {
           <div>
             <Topnav></Topnav>
             <section className='h-19/20 right-0 w-5/6 bottom-0 fixed'>
-            <Messages></Messages>
+            <Messages/>
             </section>
-            <Sidenav />
+            <Sidenav/>
           </div>
       </div>
     );
