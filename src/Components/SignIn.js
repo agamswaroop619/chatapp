@@ -16,6 +16,7 @@ export default function SignIn() {
     }
 
     const provider = new firebase.auth.GoogleAuthProvider();
+    console.log("Login done!")
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
         const user = result.user;
